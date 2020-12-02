@@ -1,7 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.7
 
 """Advent of Code 2020: Day 1"""
-
+    
 import itertools
 import time
 

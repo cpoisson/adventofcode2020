@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.7
 
 """Advent of Code 2020: Day 1"""
 
@@ -45,8 +45,6 @@ def main():
 
     print("Puzzle 2: Password count matching the rule pos.")
     print(stopwatch(puzzle_2, passwords))
-
-
 
 
 if __name__ == "__main__":
