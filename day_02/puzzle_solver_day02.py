@@ -43,7 +43,7 @@ def main():
     print("Puzzle 1: Password count matching the rule count.")
     print(stopwatch(puzzle_1, passwords))
 
-    print("Puzzle 2: Password count matching the rule pos.")
+    print("\nPuzzle 2: Password count matching the rule pos.")
     print(stopwatch(puzzle_2, passwords))
 
 
