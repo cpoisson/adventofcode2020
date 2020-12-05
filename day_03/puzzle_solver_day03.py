@@ -3,7 +3,6 @@
 """Advent of Code 2020: Day 1"""
 
 import time
-import re
 
 def slope_runner(landscape: list, step_x: int, step_y: int) -> int:
     y_max = len(landscape[0])

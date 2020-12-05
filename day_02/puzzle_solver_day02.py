@@ -3,7 +3,6 @@
 """Advent of Code 2020: Day 1"""
 
 import time
-import re
 
 def rule_match_cnt(rule: str, password: str) -> bool:
     char = str(rule.split(' ')[1])
