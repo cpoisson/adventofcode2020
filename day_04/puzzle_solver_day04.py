@@ -64,7 +64,7 @@ def stopwatch(func, arg):
     t_start = time.process_time_ns()
     result = func(arg)
     t_elapsed = time.process_time_ns() - t_start
-    return "⚙️ {} -> {} -> ⏱️ {} ms".format(func.__name__, result, t_elapsed/1000)
+    return "⚙️ {} -> {} -> ⏱️ {} ms".format(func.__name__, result, t_elapsed/10**6)
 
 # Main
 def main():

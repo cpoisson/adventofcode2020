@@ -19,7 +19,6 @@ def run_program(instructions: list) -> ProgramState:
         if state.address in state.callstack:
             state.error = 'infinite loop detected at ${}'.format(state.address)
             break
-
         state.callstack.append(state.address)
 
         instruction = instructions[state.address].split(" ")
@@ -30,13 +29,11 @@ def run_program(instructions: list) -> ProgramState:
         if instruction[0] == "acc":
             state.accumulator += int(instruction[1])
             state.address += 1
-
     return state
 
 def fix_program(instructions: list) -> ProgramState:
 
     crash_state = run_program(instructions)
-
     for address in reversed(crash_state.callstack):
 
         fixed_instructions = instructions.copy()
@@ -49,7 +46,6 @@ def fix_program(instructions: list) -> ProgramState:
             continue
 
         program_state = run_program(fixed_instructions)
-
         if program_state.error:
             continue
 
@@ -67,7 +63,7 @@ def stopwatch(func, arg):
     t_start = time.process_time_ns()
     result = func(arg)
     t_elapsed = time.process_time_ns() - t_start
-    return "⚙️ {} -> {} -> ⏱️ {} ms".format(func.__name__, result, t_elapsed/1000)
+    return "⚙️ {} -> {} -> ⏱️ {} ms".format(func.__name__, result, t_elapsed/10**6)
 
 # Main
 def main():
