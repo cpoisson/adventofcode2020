@@ -8,11 +8,10 @@ def count_occupied(x: int, y: int, seats: list, consider_floor_empty=True) -> in
         offset += 1
         for i in [-offset, 0, offset]:
             for j in [-offset, 0, offset]:
-                if (i/offset, j/offset) in list(directions):
-                    continue
+                if (i/offset, j/offset) in list(directions): continue
+                if i == 0 and j == 0: continue
                 if not (y + j) in range(0, len(seats)) or not (x + i) in range(0, len(seats[0])):
                     directions[(i/offset, j/offset)] = 'empty'
-                elif i == 0 and j == 0: continue
                 elif seats[y+j][x+i] == '#':
                     directions[(i/offset, j/offset)] = 'occupied'
                 elif seats[y+j][x+i] == 'L':
