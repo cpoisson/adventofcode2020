@@ -2,27 +2,26 @@
 import time
 
 def count_occupied(x: int, y: int, seats: list, consider_floor_empty=True) -> int:
-    look_around = dict()
-    offset = 1
-    while len(list(look_around)) != 8:
+    directions = dict()
+    offset = 0
+    while len(list(directions)) != 8:
+        offset += 1
         for i in [-offset, 0, offset]:
             for j in [-offset, 0, offset]:
-                if (i/offset, j/offset) in list(look_around):
+                if (i/offset, j/offset) in list(directions):
                     continue
                 if not (y + j) in range(0, len(seats)) or not (x + i) in range(0, len(seats[0])):
-                    look_around[(i/offset, j/offset)] = 'empty'
+                    directions[(i/offset, j/offset)] = 'empty'
+                elif i == 0 and j == 0: continue
+                elif seats[y+j][x+i] == '#':
+                    directions[(i/offset, j/offset)] = 'occupied'
+                elif seats[y+j][x+i] == 'L':
+                    directions[(i/offset, j/offset)] = 'empty'
+                elif seats[y+j][x+i] == '.' and consider_floor_empty:
+                    directions[(i/offset, j/offset)] = 'empty'
+                else:
                     continue
-                if i == 0 and j == 0: continue
-                if seats[y+j][x+i] == '#':
-                    look_around[(i/offset, j/offset)] = 'occupied'
-                    continue
-                if seats[y+j][x+i] == 'L':
-                    look_around[(i/offset, j/offset)] = 'empty'
-                    continue
-                if seats[y+j][x+i] == '.' and consider_floor_empty:
-                    look_around[(i/offset, j/offset)] = 'empty'
-        offset += 1
-    return len([_ for _ in list(look_around) if look_around[_] == 'occupied'])
+    return len([_ for _ in list(directions) if directions[_] == 'occupied'])
 
 def update_seats(seats: list, tolerance:int, consider_floor_empty: bool) -> list:
     seats_update = list()
